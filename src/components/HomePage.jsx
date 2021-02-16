@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+import Link from 'react-router-dom/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import MicIcon from '@material-ui/icons/Mic';
@@ -49,6 +49,8 @@ const useStyles = makeStyles((theme) => ({
 export default function HomePage() {
   const classes = useStyles();
 
+  const [nickname, setNickname] = useState("");
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -68,16 +70,20 @@ export default function HomePage() {
             label="Nickname"
             name="nickname"
             autoFocus
+            onChange={(e) => setNickname(e.target.value)}
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Connect
-          </Button>
+          <Link to="/rooms">
+            <Button
+              component="Link"
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Connect
+            </Button>
+          </Link>
         </form>
       </div>
       <Box mt={1}>
