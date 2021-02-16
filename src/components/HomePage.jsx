@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +13,7 @@ import MicIcon from '@material-ui/icons/Mic';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import * as Types from './../actions/Types';
 
 function Copyright() {
   return (
@@ -46,7 +48,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HomePage() {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClick:function(nickname) {
+      dispatch({
+        type: Types.SIGN_IN_REQUEST,
+        payload: {
+          nickname: nickname
+        }
+      });
+    }
+  }
+}
+
+function HomePageContainer(props) {
   const classes = useStyles();
 
   const [nickname, setNickname] = useState("");
@@ -80,6 +95,7 @@ export default function HomePage() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={function(){props.onClick(nickname)}}
             >
               Connect
             </Button>
@@ -92,3 +108,6 @@ export default function HomePage() {
     </Container>
   );
 }
+
+export default connect(undefined, mapDispatchToProps)(HomePageContainer);
+//export default HomePageContainer;
