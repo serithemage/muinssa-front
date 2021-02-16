@@ -80,7 +80,7 @@ export default function HomePage(props) {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={function(){props.onClick(nickname)}}
+              onClick={() => props.onSignIn(nickname)}
             >
               Connect
             </Button>

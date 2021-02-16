@@ -1,16 +1,11 @@
 import HomePage from './../components/HomePage';
-import * as Types from './../actions/Types';
 import { connect } from 'react-redux';
+import { signIn } from './../actions';
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick:function(nickname) {
-      dispatch({
-        type: Types.SIGN_IN_REQUEST,
-        payload: {
-          nickname: nickname
-        }
-      });
+    onSignIn: (nickname) => {
+      dispatch(signIn(nickname));
     }
   }
 }
