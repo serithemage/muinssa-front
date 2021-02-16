@@ -1,13 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import LockIcon from '@material-ui/icons/Lock';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import { Lock as LockIcon } from '@material-ui/icons';
+import {TextField,
+        Button,
+        List,
+        ListItem,
+        ListItemIcon,
+        ListItemText,
+        Typography,
+        Container} from '@material-ui/core';
+
+
+const useStyles = makeStyles((theme) => ({
+  hello: {
+    margin: theme.spacing(5,0,3)
+  },
+  create: {
+    
+  },
+  list: {
+    marginTop: theme.spacing(3),
+    width: '100%',
+    maxWidth: '100%',
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
 
 // Generate Room
 const createRoom = (id, subject, attendeesNo, lock) => {
@@ -25,14 +43,6 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
-
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
@@ -42,10 +52,42 @@ export default function RoomListPage(props) {
 
   return (
     <Container maxWidth="xs">
-      <Typography component="h2" variant="h6" color="primary" gutterBottom>
+      <Typography className={classes.hello} component="h2" color="primary" variant="h6" gutterBottom>
         Hello {props.nickname}
       </Typography>
-      <div className={classes.root}>
+      <div>
+          <TextField
+            variant="outlined"
+            margin="dense"
+            fullWidth
+            id="roomName"
+            label="Room Title"
+            name="roomName"
+            size="small"
+          />
+          <TextField
+            variant="outlined"
+            margin="dense"
+            fullWidth
+            id="password"
+            label="Password"
+            name="password"
+            type="password"
+            size="small"
+          />
+          <Link to="/rooms">
+            <Button
+              component="Link"
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+            >
+              Create Room
+            </Button>
+          </Link>
+      </div>
+      <div className={classes.list}>
         <List component="nav" aria-label="main mailbox folders">
           {rows.map((row) => (
             <ListItem button key={row.id}>
@@ -55,14 +97,9 @@ export default function RoomListPage(props) {
               <ListItemText primary={row.subject} />
             </ListItem>
           ))}
-        </List>
-        
+        </List>  
       </div>
-      <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          See more rooms
-        </Link>
-      </div>
+      
     </Container>
   );
 }
