@@ -8,7 +8,6 @@ import LockIcon from '@material-ui/icons/Lock';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import { connect } from 'react-redux';
 
 // Generate Room
 const createRoom = (id, subject, attendeesNo, lock) => {
@@ -38,13 +37,7 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-const mapStateToProps = (state) => {
-  return {
-    nickname: state.user.nickname
-  }
-}
-
-function RoomListPageContainer(props) {
+export default function RoomListPage(props) {
   const classes = useStyles();
 
   return (
@@ -73,5 +66,3 @@ function RoomListPageContainer(props) {
     </Container>
   );
 }
-
-export default connect(mapStateToProps)(RoomListPageContainer);

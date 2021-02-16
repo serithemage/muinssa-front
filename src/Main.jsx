@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import HomePage from './components/HomePage';
+import HomePage from './containers/HomePage';
 import Page404 from './components/Page404';
-import RoomListPage from './components/RoomListPage';
+import RoomListPage from './containers/RoomListPage';
 
 export default function Main() {
   return (
