@@ -90,12 +90,12 @@ export default function RoomListPage(props) {
       <div className={classes.list}>
         <List component="nav" aria-label="main mailbox folders">
           {rows.map((row) => (
-            <ListItem button key={row.id}>
+            <ListItemLink button key={row.id} href={"rooms/" + row.id}>
               {row.lock?(<ListItemIcon>
                 <LockIcon />
               </ListItemIcon>):(<></>)}
               <ListItemText primary={row.subject} />
-            </ListItem>
+            </ListItemLink>
           ))}
         </List>  
       </div>

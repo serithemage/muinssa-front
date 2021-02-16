@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from './containers/HomePage';
 import Page404 from './components/Page404';
 import RoomListPage from './containers/RoomListPage';
+import RoomPage from './components/RoomPage';
 
 export default function Main() {
   return (
@@ -18,7 +19,7 @@ export default function Main() {
         />
         <Route
           exact path='/rooms/:id'
-          render={() => {/*<Room />*/}}
+          component={RoomPage}
         />
         <Route component={Page404} />
       </Switch>
