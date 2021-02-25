@@ -49,7 +49,7 @@ export default function RoomPage(props) {
   useEffect(() => {
 
     (async () => {
-      const url = `${config.url}/join?title=1234&name=testname`;
+      const url = `${config.url}/join?title=1234&name=${props.nickname}`;
       const options = {
         method: 'GET',
         headers: {
