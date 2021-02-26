@@ -57,7 +57,10 @@ export default function RoomPage(props) {
           'Content-Type': 'application/json;charset=UTF-8'
         }
       }
-      const data = await (await fetch(url, options)).json();
+      const response = await fetch(url, options);
+      console.log(response);
+      const data = await response.json();
+      console.log(data);
       const meeting = data.JoinInfo.Meeting;
       const attendee = data.JoinInfo.Attendee;
       
