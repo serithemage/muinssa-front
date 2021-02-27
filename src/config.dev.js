@@ -1,3 +1,3 @@
 export const config = {
-  url: '<put_backend_url_here>'
+  url: 'https://hz8g2s0wye.execute-api.ap-northeast-2.amazonaws.com/prod/v1'
 }
